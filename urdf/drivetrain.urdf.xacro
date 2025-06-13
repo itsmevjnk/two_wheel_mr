@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="two_wheel_mr">
+    <xacro:arg name="prefix" default="" />
+    <xacro:arg name="use_mock_hardware" default="false" />
+
+    <xacro:include filename="$(find two_wheel_mr)/urdf/robot_description.urdf.xacro" />
+
+    <!-- Import ros2_control description -->
+    <xacro:include filename="$(find kinco_diff_controller)/urdf/robot_control.urdf.xacro" />
+
+    <xacro:robot prefix="$(arg prefix)" />
+
+    <xacro:robot_control
+        name="two_wheel_mr" prefix="$(arg prefix)"
+        port="/dev/ttyS0" left_id="1" right_id="2"
+        use_mock_hardware="$(arg use_mock_hardware)"/>
+</robot>

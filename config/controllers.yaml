@@ -1,0 +1,56 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 10 # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    drivetrain_controller:
+      type: diff_drive_controller/DiffDriveController
+
+drivetrain_controller:
+  ros__parameters: # from DiffBot example_2
+    left_wheel_names: ["left_wheel_joint"]
+    right_wheel_names: ["right_wheel_joint"]
+
+    wheel_separation: 0.3045
+    wheel_radius: 0.08
+
+    wheel_separation_multiplier: 1.0
+    left_wheel_radius_multiplier: 0.0476 # geared wheel
+    right_wheel_radius_multiplier: 0.0476
+
+    publish_rate: 50.0
+    odom_frame_id: odom
+    base_frame_id: base_link
+    
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01] # TODO
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01] # TODO
+
+    open_loop: false # odometry from feedback
+    position_feedback: true
+    enable_odom_tf: true
+    use_stamped_vel: false
+
+    cmd_vel_timeout: 0.5
+
+    linear.x.has_velocity_limits: true
+    linear.x.has_acceleration_limits: true
+    linear.x.has_jerk_limits: false
+    linear.x.max_velocity: 1.0 # TODO
+    linear.x.min_velocity: -1.0 # TODO
+    linear.x.max_acceleration: 1.0 # TODO
+    linear.x.min_acceleration: -1.0 # TODO
+    linear.x.max_jerk: 0.0
+    linear.x.min_jerk: 0.0
+
+    angular.z.has_velocity_limits: true
+    angular.z.has_acceleration_limits: true
+    angular.z.has_jerk_limits: false
+    angular.z.max_velocity: 1.0 # TODO
+    angular.z.min_velocity: -1.0 # TODO
+    angular.z.max_acceleration: 1.0 # TODO
+    angular.z.min_acceleration: -1.0 # TODO
+    angular.z.max_jerk: 0.0
+    angular.z.min_jerk: 0.0
+    
