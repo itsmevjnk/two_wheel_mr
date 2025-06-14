@@ -615,7 +615,7 @@
     <turnGravityOff>false</turnGravityOff>
     <sensor type="ray" name="rplidar">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
       <scan>
@@ -632,9 +632,12 @@
         <resolution>0.001</resolution>
       </range>
       </ray>
-      <plugin name="gazebo_ros_head_rplidar_controller" filename="libgazebo_ros_laser.so">
-      <topicName>scan</topicName>
-      <frameName>lidar_link</frameName>
+      <plugin name="gazebo_ros_head_rplidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>lidar_link</frame_name>
       </plugin>
     </sensor>
 	</gazebo>
