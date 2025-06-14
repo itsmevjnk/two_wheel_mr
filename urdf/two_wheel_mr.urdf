@@ -581,7 +581,7 @@
       xyz="-1 0 0" />
   </joint>
 
-  <link name="lidar_link">
+  <link name="base_scan">
 		<visual>
     <origin
         xyz="0.0 0.0 0.0"
@@ -605,12 +605,12 @@
 
 	<joint name="lidar_joint" type="fixed">
 		<parent link="base_link"/>
-		<child link="lidar_link"/>
+		<child link="base_scan"/>
 		<origin xyz="0.0 0 0.255" rpy="0 0 0"/>
 	</joint>
 
   <!--LIDAR-->
-	<gazebo reference="lidar_link">
+	<gazebo reference="base_scan">
     <material>Gazebo/Black</material>
     <turnGravityOff>false</turnGravityOff>
     <sensor type="ray" name="rplidar">
@@ -637,7 +637,7 @@
             <remapping>~/out:=scan</remapping>
           </ros>
           <output_type>sensor_msgs/LaserScan</output_type>
-          <frame_name>lidar_link</frame_name>
+          <frame_name>base_scan</frame_name>
       </plugin>
     </sensor>
 	</gazebo>
@@ -652,12 +652,12 @@
   <!--######################################################################-->
   <gazebo>
     <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <odometryRate>50.0</odometryRate>
-      <robotBaseFrame>base_link</robotBaseFrame>
-      <publishTF>true</publishTF>
+      <odometry_frame>odom</odometry_frame>
+      <publish_rate>50.0</publish_rate>
+      <update_rate>50.0</update_rate>
+      <robot_base_frame>base_link</robot_base_frame>
+      <publish_tf>true</publish_tf>
+      <publish_odom_tf>true</publish_odom_tf>
     </plugin>
   </gazebo>
   <!--######################################################################-->
