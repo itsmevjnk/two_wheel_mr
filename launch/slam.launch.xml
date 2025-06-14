@@ -1,0 +1,17 @@
+<launch>
+    <arg name="use_sim_time" default="false"/>
+    <arg name="rviz" default="true"/>
+
+    <include file="$(find-pkg-share slam_gmapping)/launch/slam_gmapping.launch.py">
+        <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    </include>
+
+    <include file="$(find-pkg-share nav2_bringup)/launch/navigation_launch.py">
+        <arg name="params_file" value="$(find-pkg-share two_wheel_mr)/config/nav2.yml" />
+        <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    </include>
+
+    <node pkg="rviz2" exec="rviz2" name="rviz" args="-d $(find-pkg-share two_wheel_mr)/rviz/navigation.rviz" if="$(var rviz)">
+        <param name="use_sim_time" value="$(var use_sim_time)"/>
+    </node>
+</launch>
