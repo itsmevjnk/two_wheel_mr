@@ -13,7 +13,7 @@ find_package(urdf REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(
-  DIRECTORY config launch sdf urdf meshes rviz
+  DIRECTORY config launch urdf meshes rviz
   DESTINATION share/two_wheel_mr
 )
 
