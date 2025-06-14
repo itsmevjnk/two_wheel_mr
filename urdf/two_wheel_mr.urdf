@@ -640,28 +640,21 @@
 	</gazebo>
 
 <!--######################################################################-->
-  <!-- <gazebo>
+  <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>false</legacyModeNS>
     </plugin>
-  </gazebo> -->
+  </gazebo>
   <!--######################################################################-->
   <gazebo>
-    <plugin name="object_controller" filename="libgazebo_ros_diff_drive.so">
-      <update_rate>30</update_rate>
-      <left_joint>left_wheel_joint</left_joint>
-      <right_joint>right_wheel_joint</right_joint>
-      <wheel_separation>0.3045</wheel_separation>
-      <wheel_diameter>0.160</wheel_diameter>
-      <command_topic>cmd_vel</command_topic>
-      <odometry_topic>odom</odometry_topic>
-      <odometry_frame>odom</odometry_frame>
-      <odometry_rate>50.0</odometry_rate>
-      <robot_base_frame>base_footprint</robot_base_frame>
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
-      <publish_wheel_tf>false</publish_wheel_tf>
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>50.0</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishTF>true</publishTF>
     </plugin>
   </gazebo>
   <!--######################################################################-->
@@ -681,4 +674,27 @@
     <kd value="1.0" />
     <fdir1 value="1 0 0"/>
   </gazebo>
+
+  <transmission name="left_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="left_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>21</mechanicalReduction>
+    </actuator>
+    <joint name="left_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="right_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="right_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>21</mechanicalReduction>
+    </actuator>
+    <joint name="right_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission> 
+
 </robot>
