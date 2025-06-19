@@ -46,6 +46,20 @@ def generate_launch_description():
             description="Prefix for robot joints and links.",
         )
     )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "front_lidar_ip",
+            default_value="192.168.0.20",
+            description="IP address of front LiDAR."
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "host_ip",
+            default_value="192.168.0.1",
+            description="IP address of host (connected to LiDAR)."
+        )
+    )
 
     # Initialize Arguments
     rviz = LaunchConfiguration("rviz")
@@ -148,6 +162,32 @@ def generate_launch_description():
         )
     )
 
+    host_ip = LaunchConfiguration("host_ip")
+    front_lidar_ip = LaunchConfiguration("front_lidar_ip")
+
+    front_lidar_node = Node(
+            package="sick_safetyscanners2",
+            executable="sick_safetyscanners2_node",
+            name="front_lidar",
+            output="screen",
+            emulate_tty=True,
+            parameters=[
+                {"frame_id": "base_scan",
+                 "sensor_ip": front_lidar_ip,
+                 "host_ip": host_ip,
+                 "angle_start": -1.57,
+                 "angle_end": 1.57,
+                 "time_offset": 0.0,
+                 "general_system_state": True,
+                 "derived_settings": True,
+                 "measurement_data": True,
+                 "intrusion_data": True,
+                 "application_io_data": True,
+                 "use_persistent_config": False,
+                 "min_intensities": 0.0}
+            ]
+        )
+
     nodes = [
         control_node,
         robot_state_pub_node,
@@ -155,7 +195,8 @@ def generate_launch_description():
         delay_rviz_after_joint_state_broadcaster_spawner,
         delay_joint_state_broadcaster_after_robot_controller_spawner,
         base_footprint_pub_node,
-        base_scan_pub_node
+        base_scan_pub_node,
+        front_lidar_node
     ]
 
     return LaunchDescription(declared_arguments + nodes)

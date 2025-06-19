@@ -16,6 +16,7 @@
 
   <exec_depend>nav2_bringup</exec_depend>
   <exec_depend>slam_gmapping</exec_depend> <!-- https://github.com/charlielito/slam_gmapping/tree/feature/namespace_launch -->
+  <exec_depend>sick_safetyscanners2</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
