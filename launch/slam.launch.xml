@@ -2,6 +2,8 @@
     <arg name="use_sim_time" default="false"/>
     <arg name="rviz" default="true"/>
 
+    <arg name="explore" default="false"/>
+
     <include file="$(find-pkg-share slam_gmapping)/launch/slam_gmapping.launch.py">
         <arg name="use_sim_time" value="$(var use_sim_time)"/>
     </include>
@@ -14,4 +16,8 @@
     <node pkg="rviz2" exec="rviz2" name="rviz" args="-d $(find-pkg-share two_wheel_mr)/rviz/navigation.rviz" if="$(var rviz)">
         <param name="use_sim_time" value="$(var use_sim_time)"/>
     </node>
+
+    <include file="$(find-pkg-share explore_lite)/launch/explore.launch.py" if="$(var explore)">
+        <arg name="use_sim_time" value="$(var use_sim_time)"/>    
+    </include>
 </launch>
