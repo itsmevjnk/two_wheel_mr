@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="agv">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0152000946909854 0.00117474039315474 0.0910195561515633"
+        rpy="0 0 0" />
+      <mass
+        value="64.5439245165624" />
+      <inertia
+        ixx="1.49121577423484"
+        ixy="-0.000190337575366599"
+        ixz="0.0394039846606287"
+        iyy="3.87052073855067"
+        iyz="0.000421606962278842"
+        izz="5.03992806522733" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="lidar_l">
+    <inertial>
+      <origin
+        xyz="-0.023581450658916 8.05046002083643E-09 0.00223779817490377"
+        rpy="0 0 0" />
+      <mass
+        value="0.189335150961536" />
+      <inertia
+        ixx="9.4126569435462E-05"
+        ixy="4.82701982803445E-11"
+        ixz="-2.33945223821742E-06"
+        iyy="0.000100748999349168"
+        iyz="1.86083776093011E-13"
+        izz="0.000140289739768048" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/lidar_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 0.7" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/lidar_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_j"
+    type="fixed">
+    <origin
+      xyz="0.39093 0 0.13197"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_l" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bc01_l">
+    <inertial>
+      <origin
+        xyz="-0.0457776666942068 -2.23112064812181E-06 2.22044604925031E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.31100037203892" />
+      <inertia
+        ixx="0.00377530899740119"
+        ixy="7.68621750778646E-08"
+        ixz="9.64684500138943E-19"
+        iyy="0.00241979899450848"
+        iyz="-2.16840434497101E-19"
+        izz="0.00241977565613022" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bc01_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bc01_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bc01_j"
+    type="continuous">
+    <origin
+      xyz="0 0.1257 0.0385"
+      rpy="2.6611 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="bc01_l" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="bc02_l">
+    <inertial>
+      <origin
+        xyz="0.0419723333057932 -2.23112064823283E-06 1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.31100037203892" />
+      <inertia
+        ixx="0.00377530899740119"
+        ixy="7.68621750778817E-08"
+        ixz="7.66604521934544E-19"
+        iyy="0.00241979899450848"
+        iyz="1.0842021724855E-19"
+        izz="0.00241977565613022" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bc02_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bc02_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bc02_j"
+    type="continuous">
+    <origin
+      xyz="0 -0.21345 0.0385"
+      rpy="1.6958 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="bc02_l" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="gbp01_l">
+    <inertial>
+      <origin
+        xyz="0.00709216698228399 0.0478347934727232 -2.96831264567921E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0694916705945715" />
+      <inertia
+        ixx="0.00010569872478324"
+        ixy="2.10345824058822E-05"
+        ixz="9.45507984774347E-10"
+        iyy="5.03454525775261E-05"
+        iyz="-5.72929835921564E-10"
+        izz="9.90224292840448E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp01_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp01_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gbp01_j"
+    type="continuous">
+    <origin
+      xyz="0.31539 0.16395 -0.019"
+      rpy="1.5708 0 1.3562" />
+    <parent
+      link="base_link" />
+    <child
+      link="gbp01_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="bp01_l">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-16 3.33066907387547E-16 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.152173788807328" />
+      <inertia
+        ixx="6.29515545648915E-05"
+        ixy="-1.0249098661777E-19"
+        ixz="-5.26086869583726E-22"
+        iyy="0.000116211605751744"
+        iyz="1.05879118406788E-22"
+        izz="6.29515545648916E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp01_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.647058823529412 0.270588235294118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp01_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bp01_j"
+    type="continuous">
+    <origin
+      xyz="0.02 0.015 0"
+      rpy="-1.5708 0 -0.010909" />
+    <parent
+      link="gbp01_l" />
+    <child
+      link="bp01_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="gbp02_l">
+    <inertial>
+      <origin
+        xyz="0.00709207307857418 0.0478347566587795 -5.30493133976684E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0694918485906587" />
+      <inertia
+        ixx="0.000105698752292165"
+        ixy="2.10345662757272E-05"
+        ixz="8.6310744313464E-10"
+        iyy="5.03454861728689E-05"
+        iyz="-5.70855965874165E-10"
+        izz="9.90224068615156E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp02_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp02_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gbp02_j"
+    type="continuous">
+    <origin
+      xyz="0.31539 -0.16395 -0.019"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="gbp02_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="bp02_l">
+    <inertial>
+      <origin
+        xyz="0 -1.11022302462516E-16 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.152173788807328" />
+      <inertia
+        ixx="6.29515545648916E-05"
+        ixy="-9.56945725483922E-38"
+        ixz="-1.17168733020458E-38"
+        iyy="0.000116211605751744"
+        iyz="-2.76804456158444E-36"
+        izz="6.29515545648916E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp02_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.647058823529412 0.270588235294118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp02_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bp02_j"
+    type="continuous">
+    <origin
+      xyz="0.02 0.015 0"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="gbp02_l" />
+    <child
+      link="bp02_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="gbp03_l">
+    <inertial>
+      <origin
+        xyz="0.0070920730785744 0.0478347566587794 -5.30493133588106E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0694918485906584" />
+      <inertia
+        ixx="0.000105698752292165"
+        ixy="2.1034566275727E-05"
+        ixz="8.63107442972788E-10"
+        iyy="5.03454861728694E-05"
+        iyz="-5.70855965405794E-10"
+        izz="9.90224068615163E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp03_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp03_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gbp03_j"
+    type="continuous">
+    <origin
+      xyz="-0.31539 0.16395 -0.019"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="gbp03_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="bp03_l">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 -5.55111512312578E-17 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.152173788807328" />
+      <inertia
+        ixx="6.29515545648914E-05"
+        ixy="-9.56945725483922E-38"
+        ixz="-1.17168733020459E-38"
+        iyy="0.000116211605751743"
+        iyz="-5.357349065892E-39"
+        izz="6.29515545648914E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp03_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.647058823529412 0.270588235294118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp03_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bp03_j"
+    type="continuous">
+    <origin
+      xyz="0.02 0.015 0"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="gbp03_l" />
+    <child
+      link="bp03_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="gbp04_l">
+    <inertial>
+      <origin
+        xyz="0.0070920730785744 0.0478347566587793 -5.30493133976684E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0694918485906587" />
+      <inertia
+        ixx="0.000105698752292165"
+        ixy="2.10345662757271E-05"
+        ixz="8.63107443166208E-10"
+        iyy="5.03454861728693E-05"
+        iyz="-5.70855965551857E-10"
+        izz="9.90224068615163E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp04_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/gbp04_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gbp04_j"
+    type="continuous">
+    <origin
+      xyz="-0.31539 -0.16395 -0.019"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="gbp04_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="bp04_l">
+    <inertial>
+      <origin
+        xyz="0 0 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.152173788807328" />
+      <inertia
+        ixx="6.29515545648914E-05"
+        ixy="-9.56945725483922E-38"
+        ixz="-1.17168733020459E-38"
+        iyy="0.000116211605751743"
+        iyz="-5.357349065892E-39"
+        izz="6.29515545648914E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp04_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.647058823529412 0.270588235294118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv/meshes/bp04_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bp04_j"
+    type="continuous">
+    <origin
+      xyz="0.02 0.015 0"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="gbp04_l" />
+    <child
+      link="bp04_l" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <!--LIDAR-->
+	<gazebo reference="lidar_l">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <sensor type="ray" name="rplidar">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+      <scan>
+        <horizontal>
+        <samples>360</samples>
+        <resolution>1</resolution>
+        <min_angle>-3.1415</min_angle>
+        <max_angle>3.1415</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.10</min>
+        <max>7</max>
+        <resolution>0.001</resolution>
+      </range>
+      </ray>
+      <plugin name="gazebo_ros_head_rplidar_controller" filename="libgazebo_ros_laser.so">
+      <topicName>scan</topicName>
+      <frameName>lidar_l</frameName>
+      </plugin>
+    </sensor>
+	</gazebo>
+
+<!--######################################################################-->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>false</legacyModeNS>
+    </plugin>
+  </gazebo>
+  <!--######################################################################-->
+  <gazebo>
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>50.0</odometryRate>
+      <robotBaseFrame>base</robotBaseFrame>
+      <publishTF>true</publishTF>
+    </plugin>
+  </gazebo>
+  <!--######################################################################-->
+
+  <gazebo reference="bc01_l">
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
+    <kp value="10000000.0" />
+    <kd value="1.0" />
+    <fdir1 value="1 0 0"/>
+  </gazebo>
+
+  <gazebo reference="bc02_l">
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
+    <kp value="10000000.0" />
+    <kd value="1.0" />
+    <fdir1 value="1 0 0"/>
+  </gazebo>
+
+  <transmission name="bc1_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="bc1_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="bc01_j">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="bc2_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="bc2_motor">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="bc02_j">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission> 
+
+</robot>
