@@ -7,6 +7,9 @@ controller_manager:
 
     drivetrain_controller:
       type: diff_drive_controller/DiffDriveController
+    
+    fairino5_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
 
 drivetrain_controller:
   ros__parameters: # from DiffBot example_2
@@ -53,4 +56,17 @@ drivetrain_controller:
     angular.z.min_acceleration: -1.0 # TODO
     angular.z.max_jerk: 0.0
     angular.z.min_jerk: 0.0
-    
+
+fairino5_controller:
+  ros__parameters:
+    joints:
+      - j1
+      - j2
+      - j3
+      - j4
+      - j5
+      - j6
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position    

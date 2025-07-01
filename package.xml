@@ -19,6 +19,10 @@
   <exec_depend>slam_gmapping</exec_depend> <!-- https://github.com/charlielito/slam_gmapping/tree/feature/namespace_launch -->
   <exec_depend>sick_safetyscanners2</exec_depend>
 
+  <exec_depend>fairino_hardware</exec_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>moveit_configs_utils</exec_depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

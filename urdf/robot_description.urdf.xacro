@@ -42,13 +42,13 @@
       </collision>
     </link>
 
-    <link name="${prefix}base_footprint" />
+    <!-- <link name="${prefix}base_footprint" />
 
     <joint name="${prefix}base_joint" type="fixed">
-      <parent link="${prefix}${prefix}base_footprint" />
-      <child link="${prefix}${prefix}base_link" />
+      <parent link="${prefix}base_footprint" />
+      <child link="${prefix}base_link" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </joint>
+    </joint> -->
 
     <link
       name="${prefix}base_scan">
