@@ -59,9 +59,37 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
-            "host_ip",
+            "lidar_host_ip",
             default_value="192.168.58.100",
-            description="IP address of host (connected to LiDAR)."
+            description="IP address of the robot computer, located on the same subnet as the LiDAR sensors."
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "drivetrain_port",
+            default_value="/dev/ttyS0",
+            description="Serial port that the drivetrain motors are connected to."
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "left_wheel_id",
+            default_value="1",
+            description="ID of the left wheel motor."
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "right_wheel_id",
+            default_value="2",
+            description="ID of the right wheel motor."
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "arm_ip",
+            default_value="192.168.58.2",
+            description="IP address of the Fairino arm controller."
         )
     )
 
@@ -69,6 +97,10 @@ def generate_launch_description():
     rviz = LaunchConfiguration("rviz")
     use_mock_hardware = LaunchConfiguration("use_mock_hardware")
     prefix = LaunchConfiguration("prefix")
+    drivetrain_port = LaunchConfiguration("drivetrain_port")
+    left_wheel_id = LaunchConfiguration("left_wheel_id")
+    right_wheel_id = LaunchConfiguration("right_wheel_id")
+    arm_ip = LaunchConfiguration("arm_ip")
 
     # Get URDF via xacro
     robot_description_content = Command(
@@ -84,6 +116,18 @@ def generate_launch_description():
             " ",
             "prefix:=\"",
             prefix,
+            "\" ",
+            "drivetrain_port:=\"",
+            drivetrain_port,
+            "\" ",
+            "left_wheel_id:=",
+            left_wheel_id,
+            " ",
+            "right_wheel_id:=",
+            right_wheel_id,
+            " ",
+            "arm_ip:=\"",
+            arm_ip,
             "\""
         ]
     )
@@ -202,7 +246,7 @@ def generate_launch_description():
         )
     )
 
-    host_ip = LaunchConfiguration("host_ip")
+    lidar_host_ip = LaunchConfiguration("lidar_host_ip")
     front_lidar_ip = LaunchConfiguration("front_lidar_ip")
 
     front_lidar_node = Node(
@@ -214,7 +258,7 @@ def generate_launch_description():
             parameters=[
                 {"frame_id": "base_scan",
                  "sensor_ip": front_lidar_ip,
-                 "host_ip": host_ip,
+                 "host_ip": lidar_host_ip,
                  "angle_start": -1.57,
                  "angle_end": 1.57,
                  "time_offset": 0.0,
