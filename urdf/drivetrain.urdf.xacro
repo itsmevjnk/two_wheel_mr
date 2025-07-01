@@ -20,5 +20,6 @@
     
     <xacro:fairino5_v6_robot_ros2_control
         name="fairino5" initial_positions_file="$(arg initial_positions_file)"
+        address="192.168.58.2"
         use_mock_hardware="$(arg use_mock_hardware)"/>
 </robot>
