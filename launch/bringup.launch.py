@@ -49,14 +49,14 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "front_lidar_ip",
-            default_value="192.168.0.20",
+            default_value="192.168.58.3",
             description="IP address of front LiDAR."
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "host_ip",
-            default_value="192.168.0.1",
+            default_value="192.168.58.100",
             description="IP address of host (connected to LiDAR)."
         )
     )
