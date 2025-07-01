@@ -120,18 +120,18 @@ def generate_launch_description():
         arguments=["-d", rviz_config_file],
         condition=IfCondition(rviz),
     )
-    base_footprint_pub_node = Node(
-        package="tf2_ros",
-        executable="static_transform_publisher",
-        output="both",
-        arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint']
-    )
-    base_scan_pub_node = Node(
-        package="tf2_ros",
-        executable="static_transform_publisher",
-        output="both",
-        arguments=['0', '0', '0.255', '0', '0', '0', 'base_link', 'base_scan']
-    )
+    # base_footprint_pub_node = Node(
+    #     package="tf2_ros",
+    #     executable="static_transform_publisher",
+    #     output="both",
+    #     arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint']
+    # )
+    # base_scan_pub_node = Node(
+    #     package="tf2_ros",
+    #     executable="static_transform_publisher",
+    #     output="both",
+    #     arguments=['0', '0', '0.255', '0', '0', '0', 'base_link', 'base_scan']
+    # )
 
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
@@ -194,8 +194,8 @@ def generate_launch_description():
         robot_controller_spawner,
         delay_rviz_after_joint_state_broadcaster_spawner,
         delay_joint_state_broadcaster_after_robot_controller_spawner,
-        base_footprint_pub_node,
-        base_scan_pub_node,
+        # base_footprint_pub_node,
+        # base_scan_pub_node,
         front_lidar_node
     ]
 

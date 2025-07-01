@@ -51,7 +51,7 @@
     </joint>
 
     <link
-      name="${prefix}lidar_link">
+      name="${prefix}base_scan">
       <inertial>
         <origin
           xyz="-0.023581450658916 8.05046002083643E-09 0.00223779817490377"
@@ -99,7 +99,7 @@
       <parent
         link="${prefix}base_link" />
       <child
-        link="${prefix}lidar_link" />
+        link="${prefix}base_scan" />
       <axis
         xyz="0 0 0" />
     </joint>
