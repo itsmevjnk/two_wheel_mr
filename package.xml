@@ -23,6 +23,8 @@
   <exec_depend>moveit_ros_move_group</exec_depend>
   <exec_depend>moveit_configs_utils</exec_depend>
 
+  <exec_depend>radeye_ros</exec_depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

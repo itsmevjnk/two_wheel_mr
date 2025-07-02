@@ -92,6 +92,13 @@ def generate_launch_description():
             description="IP address of the Fairino arm controller."
         )
     )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "radeye_port",
+            default_value="/dev/ttyUSB0",
+            description="Serial port for the RadEye radiation sensor."
+        )
+    )
 
     # Initialize Arguments
     rviz = LaunchConfiguration("rviz")
@@ -272,6 +279,19 @@ def generate_launch_description():
             ]
         )
 
+    radeye_port = LaunchConfiguration("radeye_port")
+    radeye_node = Node(
+        package="radeye_ros",
+        executable="radeye_node",
+        name="radeye",
+        output="screen",
+        parameters=[
+            {
+                "port": radeye_port
+            }
+        ]
+    )
+
     nodes = [
         control_node,
         move_group_node,
@@ -282,7 +302,8 @@ def generate_launch_description():
         delay_joint_state_broadcaster_after_robot_controller_spawner,
         base_footprint_pub_node,
         # base_scan_pub_node,
-        front_lidar_node
+        front_lidar_node,
+        radeye_node
     ]
 
     return LaunchDescription(declared_arguments + nodes)
