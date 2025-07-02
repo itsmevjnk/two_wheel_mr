@@ -13,7 +13,8 @@
 # limitations under the License.
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, RegisterEventHandler
+from launch.actions import DeclareLaunchArgument, RegisterEventHandler, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.conditions import IfCondition
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
@@ -292,6 +293,17 @@ def generate_launch_description():
         ]
     )
 
+    camera_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('orbbec_camera'), 'launch', 'astra_adv.launch.py'))
+    )
+
+    camera_link_pub_node = Node( # TODO: add this to URDF
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        output="both",
+        arguments=['0', '0', '0', '0', '0', '0', 'base_scan', 'camera_link']
+    )
+
     nodes = [
         control_node,
         move_group_node,
@@ -303,7 +315,9 @@ def generate_launch_description():
         base_footprint_pub_node,
         # base_scan_pub_node,
         front_lidar_node,
-        radeye_node
+        radeye_node,
+        camera_launch,
+        camera_link_pub_node
     ]
 
     return LaunchDescription(declared_arguments + nodes)

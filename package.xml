@@ -24,6 +24,7 @@
   <exec_depend>moveit_configs_utils</exec_depend>
 
   <exec_depend>radeye_ros</exec_depend>
+  <exec_depend>orbbec_camera</exec_depend> <!-- https://github.com/orbbec/OrbbecSDK_ROS2 -->
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
