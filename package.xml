@@ -16,7 +16,7 @@
   <exec_depend>teleop_twist_keyboard</exec_depend>
 
   <exec_depend>nav2_bringup</exec_depend>
-  <exec_depend>slam_gmapping</exec_depend> <!-- https://github.com/charlielito/slam_gmapping/tree/feature/namespace_launch -->
+  <exec_depend>slam_toolbox</exec_depend>
   <exec_depend>sick_safetyscanners2</exec_depend>
 
   <exec_depend>fairino_hardware</exec_depend>

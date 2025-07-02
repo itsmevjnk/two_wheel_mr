@@ -2,9 +2,21 @@
     <arg name="use_sim_time" default="false"/>
     <arg name="rviz" default="true"/>
 
-    <include file="$(find-pkg-share slam_gmapping)/launch/slam_gmapping.launch.py">
-        <arg name="use_sim_time" value="$(var use_sim_time)"/>
-    </include>
+    <arg name="async" default="true"/>
+
+    <group if="$(var async)">
+        <include file="$(find-pkg-share slam_toolbox)/launch/online_async_launch.py">
+            <arg name="use_sim_time" value="$(var use_sim_time)"/>
+            <arg name="slam_params_file" value="$(find-pkg-share two_wheel_mr)/config/slam.yaml" />
+        </include>
+    </group>
+
+    <group unless="$(var async)">
+        <include file="$(find-pkg-share slam_toolbox)/launch/online_sync_launch.py">
+            <arg name="use_sim_time" value="$(var use_sim_time)"/>
+            <arg name="slam_params_file" value="$(find-pkg-share two_wheel_mr)/config/slam.yaml" />
+        </include>
+    </group>
 
     <include file="$(find-pkg-share nav2_bringup)/launch/navigation_launch.py">
         <arg name="params_file" value="$(find-pkg-share two_wheel_mr)/config/nav2.yml" />
